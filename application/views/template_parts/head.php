@@ -16,6 +16,7 @@
 <link href="<?=assets_url("dist/plugins/global/plugins.dark.bundle.css")?>" rel="stylesheet" type="text/css" />
 <link href="<?=assets_url("dist/css/style.dark.bundle.css")?>" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?=assets_url("dist/css/custom.css")?>?ver=13">
+<link rel="stylesheet" href="<?=assets_url("dist/css/modern-index.css")?>?v=1">
 
 <link
   rel="stylesheet"
