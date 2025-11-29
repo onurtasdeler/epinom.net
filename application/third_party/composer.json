@@ -1,0 +1,6 @@
+{
+    "require": {
+        "erkineren/shopier": "^0.1.0",
+        "facebook/graph-sdk": "^5.7"
+    }
+}

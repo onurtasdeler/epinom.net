@@ -1,0 +1,37 @@
+# Logs
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+# Cache
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+# Sessions
+application/cache/sessions/*
+!application/cache/sessions/index.html
+
+# Environment
+.env
+*.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backups
+*.bak
+*.backup
+*.old
+
+# Sensitive configs (uncomment if needed)
+# application/config/database.php
+nhohj/application/logs/

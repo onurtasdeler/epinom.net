@@ -1,0 +1,99 @@
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="d-flex flex-column-fluid" style="margin-top: 15px">
+        <div class="container">
+            <div class="card card-custom">
+
+                <?php $this->load->view("includes/page_inner_header_card") ?>
+                <div class="card-body">
+                    <?php
+                    if ($this->input->get("type")) {
+                        formValidateAlert("success", "İşlem Başarılı.", "success");
+                    }
+                    ?>
+                    <?php
+                    if ($page["btnText"] != "") {
+                        ?>
+                        <a href="<?= $page["btnLink"] ?>" class="btn btn-primary mb-2"><i class="fa fa-plus"></i>   <?= $page["btnText"] ?></a>
+                        <?php
+                    }
+                    ?>
+                    <div class="separator separator-dashed separator-border-2 separator-primary"></div>
+
+                    <div class="separator separator-dashed separator-border-2 separator-primary"></div>
+                    <br>
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered  table-hover table-checkable" id="kt_datatable"
+                           style="margin-top: 13px !important">
+                        <thead>
+                        <tr>
+                            <th style="width:5%">No</th>
+                            <th>Özel Alan Adı</th>
+                            <th>Özel Alan Kategori</th>
+                            <th>Özel Alan Türü</th>
+                            <th>Zorunluluk</th>
+                            <th>Durum</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        if ($data) {
+                            $say=0;
+                            foreach ($data as $item) {
+                                $getCat=getTableSingle("table_advert_category",array("id" => $item->p_id));
+                                ?>
+                                <tr>
+                                    <td>#<?= $item->id ?></td>
+                                    <td><?= $item->name ?></td>
+                                    <td><?= $getCat->name ?></td>
+                                    <td>
+                                        <?= ($item->type==1)?"Yazı Alanı":"Seçim Alanı" ?>
+                                    </td>
+                                    <td>
+                                        <?= ($item->is_required==1)?"
+                                        <span class='label font-weight-bold label-lg  label-light-danger label-inline'>Zorunlu</span>
+                                        ":"
+                                        <span class='label font-weight-bold label-lg  label-light-warning label-inline'>Zorunlu Değil</span>
+                                        " ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        if($item->status==1){
+                                            ?>
+                                            <span class="switch switch-outline switch-icon switch-success">
+                                                <label><input type="checkbox" id="switch-lg_1_<?= $item->id ?>" checked data-url="<?= base_url('ilan-ozel-alan-veri-guncelle/status/'.$item->id) ?>" onchange="durum_degistir(1,<?= $item->id ?>)" name="select"><span></span></label></span>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <span class="switch switch-outline switch-icon switch-success">
+                                                <label><input type="checkbox" id="switch-lg_1_<?= $item->id ?>"  data-url="<?= base_url('ilan-ozel-alan-veri-guncelle/status/'.$item->id) ?>" onchange="durum_degistir(1,<?= $item->id ?>)" name="select"><span></span></label></span>
+                                            <?php
+                                        }
+                                        ?>
+
+                                    </td>
+                                    <td nowrap="nowrap">
+                                        <a href="<?= base_url('ilan-ozel-alan-guncelle/'.$item->id) ?>" class="btn btn-sm btn-clean btn-icon" title="Güncelle">
+                                            <i class="la la-edit text-warning"></i>
+                                        </a>
+                                        <a  class="btn btn-sm btn-clean btn-icon " onclick="sosyalDelete(<?= $item->id ?>)"  data-toggle="modal" data-id="' + row.ssid + '"  data-target="#menu"><i  class="la la-trash text-danger"></i></a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                    <?php
+                    createModal("Özel Alan Sil", "Özel Alanı silmek istediğinize emin misiniz?", 1, array("Sil", "sosyal_delete()", "btn-danger", "fa fa-trash"));
+                    ?>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>

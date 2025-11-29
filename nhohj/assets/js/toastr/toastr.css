@@ -1,0 +1,810 @@
+.toast-title {
+  font-weight: bold;
+}
+.toast-message {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+.toast-message a,
+.toast-message label {
+  color: #FFFFFF;
+}
+.toast-message a:hover {
+  color: #CCCCCC;
+  text-decoration: none;
+}
+.toast-close-button {
+  position: relative;
+  right: -0.3em;
+  top: -0.3em;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFFFFF;
+  -webkit-text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.8;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter: alpha(opacity=80);
+  line-height: 1;
+}
+.toast-close-button:hover,
+.toast-close-button:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  filter: alpha(opacity=40);
+}
+.rtl .toast-close-button {
+  left: -0.3em;
+  float: left;
+  right: 0.3em;
+}
+/*Additional properties for button version
+ iOS requires the button element instead of an anchor tag.
+ If you want the anchor version, it requires `href="#"`.*/
+button.toast-close-button {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+.toast-top-center {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+.toast-bottom-center {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+.toast-top-full-width {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
+.toast-bottom-full-width {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+.toast-top-left {
+  top: 12px;
+  left: 12px;
+}
+.toast-top-right {
+  top: 12px;
+  right: 12px;
+}
+.toast-bottom-right {
+  right: 12px;
+  bottom: 12px;
+}
+.toast-bottom-left {
+  bottom: 12px;
+  left: 12px;
+}
+#toast-container {
+  position: fixed;
+  z-index: 999999;
+  pointer-events: none;
+  /*overrides*/
+}
+#toast-container * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#toast-container > div {
+  position: relative;
+  pointer-events: auto;
+  overflow: hidden;
+  margin: 0 0 6px;
+  padding: 15px 15px 15px 50px;
+  width: 300px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  -moz-box-shadow: 0 0 12px #999999;
+  -webkit-box-shadow: 0 0 12px #999999;
+  box-shadow: 0 0 12px #999999;
+  color: #FFFFFF;
+  opacity: 0.8;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter: alpha(opacity=80);
+}
+#toast-container > div.rtl {
+  direction: rtl;
+  padding: 15px 50px 15px 15px;
+  background-position: right 15px center;
+}
+#toast-container > div:hover {
+  -moz-box-shadow: 0 0 12px #000000;
+  -webkit-box-shadow: 0 0 12px #000000;
+  box-shadow: 0 0 12px #000000;
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: alpha(opacity=100);
+  cursor: pointer;
+}
+#toast-container > .toast-info {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=") !important;
+}
+#toast-container > .toast-error {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=") !important;
+}
+#toast-container > .toast-success {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==") !important;
+}
+#toast-container > .toast-warning {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=") !important;
+}
+#toast-container.toast-top-center > div,
+#toast-container.toast-bottom-center > div {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#toast-container.toast-top-full-width > div,
+#toast-container.toast-bottom-full-width > div {
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.toast {
+  background-color: #030303;
+}
+.toast-success {
+  background-color: #51A351;
+}
+.toast-error {
+  background-color: #BD362F;
+}
+.toast-info {
+  background-color: #2F96B4;
+}
+.toast-warning {
+  background-color: #F89406;
+}
+.toast-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  background-color: #000000;
+  opacity: 0.4;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  filter: alpha(opacity=40);
+}
+/*Responsive Design*/
+@media all and (max-width: 240px) {
+  #toast-container > div {
+    padding: 8px 8px 8px 50px;
+    width: 11em;
+  }
+  #toast-container > div.rtl {
+    padding: 8px 50px 8px 8px;
+  }
+  #toast-container .toast-close-button {
+    right: -0.2em;
+    top: -0.2em;
+  }
+  #toast-container .rtl .toast-close-button {
+    left: -0.2em;
+    right: 0.2em;
+  }
+}
+@media all and (min-width: 241px) and (max-width: 480px) {
+  #toast-container > div {
+    padding: 8px 8px 8px 50px;
+    width: 18em;
+  }
+  #toast-container > div.rtl {
+    padding: 8px 50px 8px 8px;
+  }
+  #toast-container .toast-close-button {
+    right: -0.2em;
+    top: -0.2em;
+  }
+  #toast-container .rtl .toast-close-button {
+    left: -0.2em;
+    right: 0.2em;
+  }
+}
+@media all and (min-width: 481px) and (max-width: 768px) {
+  #toast-container > div {
+    padding: 15px 15px 15px 50px;
+    width: 25em;
+  }
+  #toast-container > div.rtl {
+    padding: 15px 50px 15px 15px;
+  }
+}
+
+
+
+
+<script>
+ var HOSTT = "<?= base_url() ?>";
+var s=0;
+
+
+
+</script>
+  <script src="<?= base_url("assets/") ?>js/swiper.min.js"></script>
+                                                             <script src="<?= base_url("assets/") ?>js/jquery.event.move.js"></script>
+                                                                                                                               <script src="<?= base_url("assets/") ?>js/image-change.min.js"></script>
+                                                                                                                                                                                                <script src="<?= base_url("assets/") ?>js/aos.js"></script>
+                                                                                                                                                                                                                                                    <script src="<?= base_url("assets/") ?>js/main.js"></script>
+                                                                                                                                                                                                                                                                                                         <script src="<?= base_url("assets/") ?>js/toastr.min.js"></script>
+
+                                                                                                                                                                                                                                                                                                                                                                    <script>
+                                                                                                                                                                                                                                                                                                                                                                    toastr.options = {
+"closeButton": false,
+"debug": false,
+"newestOnTop": false,
+"progressBar": true,
+"positionClass": "toast-top-right",
+"preventDuplicates": false,
+"onclick": null,
+"showDuration": "300",
+"hideDuration": "1000",
+"timeOut": "3000",
+"extendedTimeOut": "1000",
+"showEasing": "swing",
+"hideEasing": "linear",
+"showMethod": "fadeIn",
+"hideMethod": "fadeOut"
+}
+var $modal = $('#modal');
+var image = document.getElementById('image');
+var cropper="";
+$("body").on("change", ".image", function(e){
+  var deger = this.files[0].size;
+  deger=Math.ceil((deger/1024)/1024);
+if(deger>5){
+  toastr.error('Resim büyüklüğü Max 5 MB olmalıdır.');
+}else{
+   var files = e.target.files;
+var done = function (url) {
+  image.src = url;
+  var reader = new FileReader();
+  reader.readAsDataURL(files[0]);
+reader.onload = function (e) {
+//Initiate the JavaScript Image object.
+var image = new Image();
+  image.src = e.target.result;
+image.onload = function () {
+  var height = this.height;
+  var width = this.width;
+if (height >= 600 && width >= 600) {
+if($("#isim").val()!=""){
+$.post(HOSTT + "image-temp-delete", {pathh:$("#isim").val()}, function (response) {
+  $modal.modal('show');
+});
+} else{
+    $modal.modal('show');
+  }
+}else{
+
+   toastr.error("Resim minimum 600px x 600px olmalıdır.");
+   $( "#im" ).val("");
+ }
+};
+}
+};
+var reader;
+var file;
+var url;
+if (files && files.length > 0) {
+  file = files[0];
+
+if (URL) {
+done(URL.createObjectURL(file));
+} else if (FileReader) {
+
+  reader = new FileReader();
+reader.onload = function (e) {
+done(reader.result);
+};
+reader.readAsDataURL(file);
+}
+}
+}
+});
+
+$modal.on('shown.bs.modal', function () {
+cropper = new Cropper(image, {
+aspectRatio: 1,
+viewMode: 3,
+preview: '.preview',
+dragMode: 'move',
+data: {
+  width: 600,
+  height: 600,
+},
+cropmove: function(event) {
+  var data = cropper.getData();
+if (data.width < 600) {
+  event.preventDefault();
+  data.width = 600;
+  cropper.setData(data);
+}
+if (data.height < 600) {
+  event.preventDefault();
+  data.height = 600;
+  cropper.setData(data);
+}
+}
+});
+})
+
+$('#modal').on('hidden.bs.modal', function (e) {
+  cropper.destroy();
+  cropper=null;
+  $("#im").val("");
+})
+
+$("#crop").click(function(){
+var canvas = cropper.getCroppedCanvas({
+  width: 600,
+  height: 600,
+});
+canvas.toBlob(function(blob) {
+  url = URL.createObjectURL(blob);
+  var reader = new FileReader();
+  reader.readAsDataURL(blob);
+reader.onloadend = function() {
+  var base64data = reader.result;
+$.ajax({
+type: "POST",
+dataType: "json",
+url:  "<?= base_url("change-pic") ?> ",
+data: {image: base64data},
+success: function(data){
+  $("#isim").val(data);
+toastr.options = {
+"closeButton": false,
+"debug": false,
+"newestOnTop": false,
+"progressBar": true,
+"positionClass": "toast-top-right",
+"preventDuplicates": false,
+"onclick": null,
+"showDuration": "300",
+"hideDuration": "1000",
+"timeOut": "1500",
+"extendedTimeOut": "1000",
+"showEasing": "swing",
+"hideEasing": "linear",
+"showMethod": "fadeIn",
+"hideMethod": "fadeOut"
+}
+toastr.info("Fotoğraf Kırlıpılıyor.. <i class='fa fa-spinner fa-spin'></i>");
+$modal.modal('hide');
+$('#thumbnil').attr('src', HOSTT + data);
+$('#thumbnil').show();
+$(".box").hide();
+$(".top").show();
+}
+});
+}
+});
+})
+
+</script>
+  <script>
+
+  $(document).ready(function () {
+
+  $("#odemeOnay").attr('autocomplete', 'off');
+  $("#cerceveOnayForm").attr('autocomplete', 'off');
+
+toastr.options = {
+"closeButton": false,
+"debug": false,
+"newestOnTop": false,
+"progressBar": true,
+"positionClass": "toast-top-right",
+"preventDuplicates": false,
+"onclick": null,
+"showDuration": "300",
+"hideDuration": "1000",
+"timeOut": "3000",
+"extendedTimeOut": "1000",
+"showEasing": "swing",
+"hideEasing": "linear",
+"showMethod": "fadeIn",
+"hideMethod": "fadeOut"
+}
+var minLength = 14;
+var maxLength = 14;
+
+$('#phone').keypress(function (e) {
+  var charCode = (e.which) ? e.which : event.keyCode
+if (String.fromCharCode(charCode).match(/[^0-9]/g))
+return false;
+});
+
+$('#phone').on('keydown keyup change', function(){
+  var char = $(this).val();
+  var charLength = $(this).val().length;
+if(charLength==2 && char=="(0"){
+  $(this).val("(");
+}
+if(charLength < minLength){
+  $('#warning-message').text('Length is short, minimum '+minLength+' required.');
+}else if(charLength > maxLength){
+  $('#warning-message').text('Length is not valid, maximum '+maxLength+' allowed.');
+  $(this).val(char.substring(0, maxLength));
+}else{
+   $('#warning-message').text('');
+ }
+});
+
+$('#phone').keydown(function (e) {
+
+  var key = e.which || e.charCode || e.keyCode || 0;
+
+  $phone = $(this);
+// Don't let them remove the starting '('
+if ($phone.val().length === 1  && (key === 8 || key === 46  )) {
+
+  $phone.val('(');
+  return false;
+}
+// Reset if they highlight and type over first char.
+   else if ($phone.val().charAt(0) !== '(') {
+
+  $phone.val('('+String.fromCharCode(e.keyCode)+'');
+}
+
+// Auto-format- do not expose the mask as the user begins to type
+   if (key !== 8 && key !== 9 ) {
+if ($phone.val().length === 4) {
+  $phone.val($phone.val() + ')');
+}
+if ($phone.val().length === 5) {
+  $phone.val($phone.val() + ' ');
+}
+if ($phone.val().length === 9) {
+  $phone.val($phone.val() + '-');
+}
+}
+
+// Allow numeric (and tab, backspace, delete) keys only
+                                              return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+}).bind('focus click', function () {
+  $phone = $(this);
+if ($phone.val().length === 0) {
+  $phone.val('(');
+}
+else {
+  var val = $phone.val();
+  $phone.val('').val(val); // Ensure cursor remains at the end
+}
+}).blur(function () {
+  $phone = $(this);
+if ($phone.val() === '(') {
+  $phone.val('');
+}
+});
+
+//iletisim form ajax
+        $("#iletisimFormMain").on("submit", function () {
+$.post(HOSTT + "api-cart-contact", $(this).serialize(), function (response) {
+if (response.errorr == "yok") {
+  $("#randevuBilgi1").fadeIn("slow");
+setTimeout(function () {
+  window.location.href = "<?= base_url() ?>"
+}, 2000);
+} else if (response.errorr == "kvkk") {
+  $("#randevuBilgi1").hide();
+  $("#randevuBilgiHata1").fadeIn("slow");
+  $("#randevuBilgiHata1 #metin").html("Lütfen KVKK Bildirimini Onaylayınız.");
+} else if (response.errorr == "eksik") {
+  $("#randevuBilgi1").hide();
+  $("#randevuBilgiHata1").fadeIn("slow");
+  $("#randevuBilgiHata1 #metin").html("Lütfen alanları eksiksiz doldurunuz.");
+} else {
+    $("#randevuBilgi1").hide();
+    $("#randevuBilgiHata1").fadeIn("slow");
+    $("#randevuBilgiHata1 #metin").html("Beklenmeyen bir hata meydana geldi.");
+  }
+});
+
+});
+
+//resim crop kvkk
+        $("#imageFormKvkkSubmit").on("submit", function () {
+if($("#isim").val()==""){
+  toastr.error("Lütfen önce fotoğraf yükleyiniz..");
+}else{
+if($('#imageKvkkSelect').is(':checked')){
+$.post(HOSTT + "image-true-submit", {imageKvkkSelect:$("#imageKvkkSelect").val(),isim:$("#isim").val()},function (response) {
+if(response.errorr){
+if(response.errorr=="kvkk"){
+  toastr.error("KVKK onaylamanız gerekmektedir.");
+}else if(response.errorr=="path"){
+  toastr.error("Resim Bulunamadı.Lütfen tekrar deneyiniz.");
+}
+}else{
+   toastr.success("Sepete Eklendi");
+   $(".total").show();
+$('html, body').animate({ scrollTop:  $("#basket").offset().top - 150 }, 'slow');
+$(".total").html("<span> Toplam: " + response.toplam + " ₺</span>");
+$("#basket").html(response.text);
+}
+});
+}else{
+   toastr.error("KVKK onaylamanız gerekmektedir.");
+ }
+}
+});
+
+//çerçeve ekle button
+        $("#cerceveAdd").on("click",function(){
+if($("#isim").val()==""){
+  toastr.error("Lütfen önce fotoğraf yükleyiniz..");
+}else{
+if($('#imageKvkkSelect').is(':checked')){
+if($("#cerceveAdet").val()==0){
+  $("#cerceveSecimVal").val("0");
+  $(".frame-form").hide();
+}
+if($.isNumeric($("#cerceveAdet").val())){
+if($("#cerceveAdet").val()!=0){
+  $("#cerceveSecimVal").val("1");
+}
+$.post(HOSTT + "order-add-cerceve", {isim:$("#isim").val(),adet:$("#cerceveAdet").val(),imageKvkkSelect:$("#imageKvkkSelect").val()}, function (response) {
+if(response.errorr){
+if(response.errorr=="kvkk"){
+  toastr.error("KVKK onaylamanız gerekmektedir.");
+}else if(response.errorr=="path"){
+  toastr.error("Resim Bulunamadı.Lütfen tekrar deneyiniz.");
+}else if(response.errorr=="fiyat"){
+  toastr.error("Fiyat girişi sağlanmamış.");
+}
+}else{
+   toastr.success("Sepete Eklendi");
+$('html, body').animate({ scrollTop:  $("#basket").offset().top - 150 }, 'slow');
+$("#basket").html(response.text);
+$("#box2").show();
+$("#box2").html("<img width='300' height='300' src='" + HOSTT + $('#isim').val() + "' >");
+$(".total").html("<span> Toplam: " + response.toplam + " ₺</span>");
+}
+});
+}else{
+   toastr.error("Lütfen geçerli bir değer giriniz");
+ }
+
+}else{
+   toastr.error("KVKK onaylamanız gerekmektedir.");
+ }
+}
+});
+
+$("#cerceveAddSingle").on("click",function(){
+if($("#cerceveAdet").val()==0){
+  $("#cerceveSecimVal").val("0");
+  $(".frame-form").hide();
+  $(".total").fadeOut("slow");
+  $("#basket").html("<p>Herhangi bir ürün seçilmedi.</p><br>");
+}
+else if($.isNumeric($("#cerceveAdet").val())){
+if($("#cerceveAdet").val()!="0"){
+  $("#cerceveSecimVal").val("1");
+}
+$.post(HOSTT + "order-add-cerceve-single", {isim:$("#isim").val(),adet:$("#cerceveAdet").val(),imageKvkkSelect:$("#imageKvkkSelect").val()}, function (response) {
+if(response.errorr){
+if(response.errorr=="kvkk"){
+  toastr.error("KVKK onaylamanız gerekmektedir.");
+}else if(response.errorr=="path"){
+  toastr.error("Resim Bulunamadı.Lütfen tekrar deneyiniz.");
+}else if(response.errorr=="fiyat"){
+  toastr.error("Fiyat girişi sağlanmamış.");
+}
+}else{
+   toastr.success("Sepete Eklendi");
+$('html, body').animate({ scrollTop:  $("#basket").offset().top - 150 }, 'slow');
+$(".total").html("<span> Toplam: " + response.toplam + " ₺</span>");
+$(".total").show();
+$("#basket").html(response.text);
+$("#box2").show();
+}
+});
+}else{
+   toastr.error("Lütfen geçerli bir değer giriniz");
+ }
+});
+
+$("#infoAuto").on("click",function(){
+if($("#cerceveSecimVal").val()=="0"){
+if($("#cerceveAdet").val()==0){
+  toastr.info("Çerçeve ekleyiniz.");
+}else{
+   toastr.info("Çerçeve adedini onaylayınız.");
+ }
+}else{
+if($.isNumeric($("#cerceveAdet").val())) {
+if ($("#email").val() == "") {
+  toastr.info("E-mail alanı boş geçilemez.");
+} else {
+$.post(HOSTT + "get-info-mail", {email:$("#email").val()}, function (response) {
+if(response.errorr){
+  toastr.error(response.message);
+}else{
+   $("#name").removeAttr("disabled");
+   $("#surname").removeAttr("disabled");
+   $("#sehir").removeAttr("disabled");
+   $("#adres").removeAttr("disabled");
+   $("#phone").removeAttr("disabled");
+
+   $("#name").addClass("active");
+   $("#surname").addClass("active");
+   $("#sehir").addClass("active");
+   $("#adres").addClass("active");
+   $("#phone").addClass("active");
+
+   $("#email").val(response.email);
+   $("#name").val(response.ad);
+   $("#surname").val(response.soyad);
+   $("#adres").val(response.adres);
+   $("#sehir").val(response.sehir);
+   $("#phone").val(response.tel);
+ }
+});
+}
+}
+}
+});
+
+//ödeme single
+        $("#cerceveOnayForm").on("submit", function (e) {
+  e.preventDefault();
+  var form = this;
+if($("#cerceveSecimVal").val()==""){
+  toastr.info("Çerçeve adedini onaylayınız");
+}else{
+if($('#imageKvkkSelect').is(':checked')){
+var regex1= /[qwrtypsdfghjklzxcvbnmQWRTYPSDFGHJKLZCXVBNMÇ]{3,}/;
+var regex2= /[euıiüaöEUIAO]{3,}/;
+if(regex1.test($("#name").val()) || regex1.test($("#surname").val())){
+  toastr.error("Ad ve Soyad alanı anlamlı olmalıdır.");
+}else{
+$.post(HOSTT + "order-submit", $(this).serialize(), function (response) {
+if(response.errorr){
+if(response.errorr=="kvkk"){
+  toastr.error("KVKK onaylamanız gerekmektedir.");
+$('html, body').animate({ scrollTop:  $(".title").offset().top - 150 }, 'slow');
+}else if(response.errorr=="path"){
+  toastr.error("Resim Bulunamadı.Lütfen tekrar deneyiniz.");
+}else if(response.errorr=="validation") {
+  var result = $(response.message).text().split('\n');
+for(var i=0;i<result.length;i++){
+  toastr.error(result[i]);
+}
+}else if(response.errorr=="kayit"){
+  toastr.error("Kayıt sırasında bir hata meydana geldi. Lütfen tekrar deneyiniz.");
+}
+}else{
+if(response.inputs){
+  $('#odemeOnay').append(response.inputs);
+  form.submit();
+}
+}
+});
+}
+
+}else{
+   toastr.error("KVKK onaylamanız gerekmektedir.");
+ }
+}
+});
+
+$("#cerceveOnayForm").on("submit", function (e) {
+  e.preventDefault();
+  var form = this;
+if($("#cerceveSecimVal").val()==""){
+  toastr.info("Çerçeve adedini onaylayınız");
+}else{
+if($('#imageKvkkSelect').is(':checked')){
+var regex1= /[qwrtypsdfghjklzxcvbnmQWRTYPSDFGHJKLZCXVBNMÇ]{3,}/;
+var regex2= /[euıiüaöEUIAO]{3,}/;
+if(regex1.test($("#name").val()) || regex1.test($("#surname").val())){
+  toastr.error("Ad ve Soyad alanı anlamlı olmalıdır.");
+}else{
+$.post(HOSTT + "order-submit", $(this).serialize(), function (response) {
+if(response.errorr){
+if(response.errorr=="kvkk"){
+  toastr.error("KVKK onaylamanız gerekmektedir.");
+$('html, body').animate({ scrollTop:  $(".title").offset().top - 150 }, 'slow');
+}else if(response.errorr=="path"){
+  toastr.error("Resim Bulunamadı.Lütfen tekrar deneyiniz.");
+}else if(response.errorr=="validation") {
+  var result = $(response.message).text().split('\n');
+for(var i=0;i<result.length;i++){
+  toastr.error(result[i]);
+}
+}else if(response.errorr=="kayit"){
+  toastr.error("Kayıt sırasında bir hata meydana geldi. Lütfen tekrar deneyiniz.");
+}
+}else{
+if(response.inputs){
+  $('#odemeOnay').append(response.inputs);
+  form.submit();
+}
+}
+});
+}
+
+}else{
+   toastr.error("KVKK onaylamanız gerekmektedir.");
+ }
+}
+});
+
+});
+
+
+$(function(){
+$('.onlyTxt').keypress(function (e) {
+  var regex = /^[a-züöçğşıİÜĞÇŞÖ\s]+$/i;
+  var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+if (regex.test(str)) {
+  return true;
+}
+else
+{
+  e.preventDefault();
+  return false;
+}
+});
+$("#name").bind("cut copy paste", function(){
+  return false;
+});
+$("#surname").bind("cut copy paste", function(){
+  return false;
+});
+$("#email").bind("cut copy paste", function(){
+  return false;
+});
+$("#emailTry").bind("cut copy paste", function(){
+  return false;
+});
+
+});
+
+function Sayi(e) {
+
+  islem = document.all ? window.event : e;
+
+  karakter = document.all ? islem.keyCode : islem.which;
+
+if(karakter<48||karakter>57) {
+
+if(document.all) { islem.returnValue = false; } else { islem.preventDefault(); }
+
+}
+
+}
+
+function sadeceHarf(deger) {
+//JavaScript sadece harf ve boşluk kontrol Regex'i
+var letter_pattern = /^[a-züöçğşıİÜĞÇŞÖ\s]+$/i;
+  var ok = letter_pattern.test(deger); //fonksiyondan gelen değeri test ediyoruz.
+if (ok) //Sonuç True ise wrong class'ını kaldırıp success class'ını ekliyoruz.
+$('#input').removeClass('wrong').addClass("success");
+else { //Sonuç False ise success class'ını kaldırıp wrong class'ını ekliyoruz.
+$('#input').removeClass('success').addClass("wrong");
+}
+}
+
+</script>
+

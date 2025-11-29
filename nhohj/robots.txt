@@ -1,0 +1,47 @@
+# Tüm arama motorlarına ve yapay zeka tarayıcılarına yönelik genel kurallar
+User-agent: *
+Disallow: /admin/
+Disallow: /epinko_new_admin/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /account/
+Disallow: /login/
+Disallow: /register/
+Disallow: /search/
+Disallow: /api/
+Disallow: /temp/
+Disallow: /private/
+Disallow: /*?*
+
+# Googlebot'a özel izinler
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /epinko_new_admin/
+Disallow: /checkout/
+Disallow: /cart/
+
+# Bingbot için izinler
+User-agent: Bingbot
+Allow: /
+Disallow: /private/
+Disallow: /hidden/
+
+# Yandex bot için izinler
+User-agent: Yandex
+Allow: /
+Disallow: /admin/
+Disallow: /epinko_new_admin/
+Disallow: /temp/
+
+# ChatGPT ve yapay zeka tarayıcılarına yönelik
+User-agent: OpenAI-User-Agent
+Disallow: /api/
+Disallow: /private/
+
+User-agent: CCBot
+Disallow: /temp/
+Disallow: /private/
+
+# Önemli Sitemap Konumu
+Sitemap: https://www.epinko.com/sitemap.xml

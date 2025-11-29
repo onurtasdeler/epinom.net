@@ -1,0 +1,185 @@
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+
+    <div class="d-flex flex-column-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <?php $this->load->view("settings/toolbar") ?>
+
+                </div>
+                <div class="col-lg-9">
+                    <div class="card card-custom">
+                        <?php $this->load->view("includes/page_inner_header_card") ?>
+                        <div class="card-body">
+                            <!--begin: Datatable-->
+                            <div class="row">
+                                <div class="col-xl-12 col-xxl-12">
+                                    <!--begin::Wizard Form-->
+                                    <form class="form" method="post" enctype="multipart/form-data">
+                                        <!--begin::Wizard Step 1-->
+                                        <div class="row">
+
+                                            <div class="col-xl-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="alert alert-warning">
+                                                            <b>[uye]</b>: Mesaj gönderenin kullanıcı adını temsil eder.
+                                                            <br>
+                                                            <b>[ilanadi]</b>: İlgili ilanın adını temsil eder.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-xl-4">
+                                                        <label >Şablon Adı (Tanımlayıcı)</label>
+                                                        <input type="text"
+                                                               class="form-control"
+                                                               required="" id="name" name="name"
+                                                               placeholder="Şablon Adı" value=""/>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <div class="form-group">
+                                                            <label>Tür</label>
+                                                            <select name="type" id="type" class="form-control">
+                                                                <option value="1">Mağaza Sayfasından</option>
+                                                                <option value="0">İlan Detay Sayfasından</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-4">
+                                                        <label>Aktif / Pasif</label>
+                                                        <select class="form-control" name="status" id="">
+                                                            <option value="1" selected>Aktif</option>
+                                                            <option value="0">Pasif</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-12">
+                                                        <div class=" mt-2 mb-2 alert alert-info">
+                                                            <i class="fa fa-warning"></i> Sitede Görünmesi için dil verilerini <b>doldurmayı unutmayınız.</b>
+                                                        </div>
+                                                        <?php
+                                                        if ($this->settings->lang == 1) {
+                                                            $getLang = getTableOrder("table_langs", array("status" => 1), "main", "desc");
+                                                            if ($getLang) {
+                                                                ?>
+                                                                <div class="row">
+                                                                    <div class="col-xl-12">
+                                                                        <br>
+                                                                        <p class="font-weight-normal">Dil Verileri</p>
+                                                                        <ul class="nav nav-tabs nav-tabs-line">
+                                                                            <?php
+                                                                            $say = 0;
+                                                                            foreach ($getLang as $item) {
+                                                                                if ($say == 0) {
+                                                                                    ?>
+                                                                                    <li class="nav-item">
+                                                                                        <a class="nav-link active font-weight-bold"
+                                                                                           style="font-size: 14px" data-toggle="tab"
+                                                                                           href="#kt_tab_pane_<?= $item->id ?>"><b><?= $item->name ?></b></a>
+                                                                                    </li>
+
+                                                                                    <?php
+                                                                                    $say++;
+                                                                                } else {
+                                                                                    ?>
+                                                                                    <li class="nav-item">
+                                                                                        <a class="nav-link " data-toggle="tab"
+                                                                                           href="#kt_tab_pane_<?= $item->id ?>"><b><?= $item->name ?></b></a>
+                                                                                    </li>
+                                                                                    <?php
+                                                                                }
+                                                                            }
+                                                                            ?>
+                                                                        </ul>
+                                                                        <div class="tab-content mt-5" id="myTabContent">
+                                                                            <?php
+                                                                            $say2 = 0;
+                                                                            foreach ($getLang as $item) {
+                                                                                if ($say2 == 0) {
+                                                                                    ?>
+                                                                                    <div class="tab-pane fade show active"
+                                                                                         id="kt_tab_pane_<?= $item->id ?>" role="tabpanel"
+                                                                                         aria-labelledby="kt_tab_pane_<?= $item->id ?>">
+                                                                                        <div class="form-group">
+                                                                                            <label>Mesaj ( <?= $item->name ?> )</label>
+                                                                                            <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   required="" id="name_<?= $item->id ?>" name="name_<?= $item->id ?>"
+                                                                                                   placeholder="Mesaj" value=""/>
+                                                                                        </div>
+
+
+                                                                                    </div>
+
+                                                                                    <?php
+                                                                                    $say2++;
+                                                                                } else {
+                                                                                    ?>
+                                                                                    <div class="tab-pane fade"
+                                                                                         id="kt_tab_pane_<?= $item->id ?>" role="tabpanel"
+                                                                                         aria-labelledby="kt_tab_pane_<?= $item->id ?>">
+                                                                                        <div class="form-group">
+                                                                                            <label>Mesaj  ( <?= $item->name ?> )</label>
+                                                                                            <input type="text"
+                                                                                                   class="form-control"
+                                                                                                   required="" id="name_<?= $item->id ?>" name="name_<?= $item->id ?>"
+                                                                                                   placeholder="Mesaj " value=""/>
+                                                                                        </div>
+
+
+                                                                                    </div>
+                                                                                    <?php
+                                                                                }
+                                                                            }
+                                                                            ?>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                            ?>
+
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                                <!--begin::Input-->
+
+                                                <!--end::Input-->
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="d-flex justify-content-between border-top mt-5 pt-10">
+                                            <div class="mr-2">
+                                            </div>
+                                            <div>
+                                                <a href="<?= base_url("ayarlar/sms-sablonlari") ?>" type="button"
+                                                   class="btn btn-warning font-weight-bolder text-uppercase px-9 py-4"
+                                                >Vazgeç
+                                                </a>
+                                                <button type="submit"
+                                                        class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4"
+                                                >Kaydet
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!--end::Wizard Actions-->
+                                    </form>
+                                    <!--end::Wizard Form-->
+                                </div>
+                            </div>
+                            <!--end::Wizard Body-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

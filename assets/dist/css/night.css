@@ -1,0 +1,130 @@
+body.night {
+    --bg-light: var(--color);
+    --bg-dark: var(--bg-color);
+    --bg-primary: #6610f2;
+    --bg-primary-light: orange;
+    --bg-secondary: #8510f2;
+    --bg-color: #0d0c13;
+    --bg-alert-warning: #f5a108;
+    --bg-alert-danger: crimson;
+    --bg-alert-pm: #085373;
+    --bg-alert-success: #62a388;
+    --color: #fff;
+    --orange-color: #de2a02;
+    --gray-color: #d9dae9;
+    --main-color: var(--bg-primary);
+    --secondary-color: var(--bg-secondary);
+    --dark-bg-color: #0a0a0f;
+    --code-area-color: #eceff1;
+    --help-item-holder-seconday-color: #d9dae9;
+    background: var(--bg-color) !important;
+}
+.night #loadingArea {
+    background: var(--bg-color) !important;
+}
+.night header {
+    background: var(--bg-color) !important;
+}
+.night .btn-white,.night .bg-white {
+    background: var(--dark-bg-color) !important;
+    border-color: var(--main-color) !important;
+    color: var(--color) !important;
+}
+.night .btn-white *,.night .btn-white {
+    color: var(--color) !important;
+}
+.night .btn-white:focus {
+    box-shadow:0 ​0 0 0.1rem var(--main-color) !important;
+}
+.night #top-main-products .top-main-product,.night .top-main-products .top-main-product {
+    box-shadow: none !important;
+    background: var(--bg-color) !important;
+}
+.night #top-main-products .top-main-product:hover,.night .top-main-products .top-main-product:hover {
+    box-shadow: none !important;
+    background: var(--dark-bg-color) !important;
+}
+.night #home-popular-boxes {
+    padding-bottom: 0.25rem;
+}
+.night ::-webkit-scrollbar-thumb{
+    height: 1px !important;
+    color: var(--color) !important;
+}
+.night ::-webkit-scrollbar-track {
+    height: 1px !important;
+    background-color: var(--main-color) !important;
+}
+.night ul li a {
+    color: var(--color) !important;
+}
+.night span {
+    color: var(--color) !important;
+}
+.night #headerSearchArea input {
+    background-color: var(--dark-bg-color) !important;
+    color: var(--color) !important;
+}
+.night h1,h2,h3,h4,h5,h6 {
+    color: var(--color) !important;
+}
+.night .category-list .category {
+    background-color: var(--dark-bg-color) !important;
+}
+.night .category-list .category *{
+    color: var(--color) !important;
+}
+.night footer a{
+    color: var(--color) !important;
+}
+.night footer a:hover{
+    color: var(--main-color) !important;
+}
+.night .text-secondary {
+    color: var(--secondary-color) !important;
+}
+.night .border-bottom {
+    border-color: var(--main-color) !important;
+}
+.night .home-news-item-title {
+    color: var(--secondary-color) !important;
+}
+.night .badge,.night .badge-white {
+    color:var(--dark-bg-color) !important;
+}
+.night .list-group-item {
+    background-color: var(--dark-bg-color) !important;
+}
+.night .bg-light {
+    background-color: var(--dark-bg-color) !important;
+    color: var(--color) !important;
+}
+.night input,.night select,.night textarea {
+    background-color: var(--dark-bg-color) !important;
+    color: var(--color) !important;
+}
+.night th,.night td {
+    color: var(--color) !important;
+}
+.night table {
+    background-color: var(--dark-bg-color) !important;
+}
+.night .modal-content {
+    background-color: var(--dark-bg-color) !important;
+}
+.night label {
+    color: var(--color) !important;
+}
+.night .list-group-item img {
+    background-color: var(--color) !important;
+}
+.night .text-dark {
+    color: var(--color) !important;
+}
+.night .btn-light {
+    background: var(--dark-bg-color) !important;
+    color: var(--color) !important; 
+}
+.night .bank_account {
+    background: none !important;
+}

@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Bootstrap 4.4 */
+@import 'bootstrap4/bootstrap.scss';
+/* Themify Icons */
+@import 'themify-icons.scss';
+/* Animate.css */
+@import 'animate.scss';
+/* Swiper Slider */
+@import 'swiper.scss';
+/* Select2 */
+@import 'select2.scss';
+/* SweetAlert */
+@import 'sweetalert.scss';
+
+@import 'desktop.scss';
+@import 'tablet.scss';
+@import 'mobile.scss';

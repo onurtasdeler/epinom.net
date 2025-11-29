@@ -1,0 +1,120 @@
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="d-flex flex-column-fluid" style="margin-top: 15px">
+        <div class="container">
+            <div class="card card-custom">
+
+                <?php $this->load->view("includes/page_inner_header_card") ?>
+                <div class="card-body">
+                    <?php
+                    if ($this->input->get("type")) {
+                        formValidateAlert("success", "İşlem Başarılı.", "success");
+                    }
+                    ?>
+                    <?php
+                    if ($page["btnText"] != "") {
+                        ?>
+                        <a href="<?= $page["btnLink"] ?>" class="btn btn-primary mb-2"><?= $page["btnText"] ?></a>
+                        <?php
+                    }
+                    ?>
+                    <!--begin: Datatable-->
+                    <table class="table table-bordered table-hover table-checkable" id="kt_datatable"
+                           style="margin-top: 13px !important">
+                        <thead>
+                        <tr>
+                            <th style="width:5%">Sıra No</th>
+                            <th style="width: 10%">Resim</th>
+                            <th>Hizmet Adı</th>
+                            <th style="">Durum</th>
+                            <th style="width: 10%;"> İşlem</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+
+                        if ($data["data"]) {
+                            $say=0;
+                            foreach ($data["data"] as $item) {
+                                ?>
+                                <tr>
+                                    <td><?= $item->order_id ?></td>
+                                    <td>
+                                        <?php
+                                        if($item->image!=""){
+                                            ?>
+                                            <div class="symbol symbol-90 mr-3">
+                                                <img src="../../upload/hizmetler/<?= $item->image ?>" alt="">
+                                            </div>
+
+                                            <?php
+                                        }else{
+                                            ?>
+                                                <span class="text-info">Resim Eklenmemiş.</span>
+                                            <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?= $item->name ?>
+                                    </td>
+                                    <td>
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            <?php
+                                            $check = "";
+                                            if ($item->status == "1") {
+                                                $check = "checked='checked'";
+                                            } else {
+                                                $check = "";
+                                            }
+                                            ?>
+                                            <label>
+                                                <input type="checkbox" id="switch-lg_<?= $item->id ?>" <?= $check ?> data-url="<?= base_url('hizmet-durum-guncelle/' . $item->id) ?>"
+                                                       onchange="durum_degistir(<?= $item->id ?>)" name="select">
+                                                <span></span>
+                                            </label>
+                                        </span>
+
+                                    </td>
+                                    <td nowrap="nowrap">
+                                        <a href="<?= base_url('hizmetler/'.$item->parent.'?down='.$item->id) ?>" class="btn btn-sm btn-clean btn-icon" title="Aşağı Taşı">
+                                            <i class="la la-arrow-down text-primary"></i>
+                                        </a>
+                                        <a href="<?= base_url('hizmetler/'.$item->parent.'?up='.$item->id) ?>" class="btn btn-sm btn-clean btn-icon" title="Yukarı Taşı">
+                                            <i class="la la-arrow-up text-primary"></i>
+                                        </a>
+                                        <a href="<?= base_url('hizmetler-galeri/'.$item->id) ?>" class="btn btn-sm btn-clean btn-icon" title="Hizmet Galeri">
+                                            <i class="la la-picture-o text-success"></i>
+                                        </a>
+                                        <a href="<?= base_url('hizmetler-sss/'.$item->id) ?>" class="btn btn-sm btn-clean btn-icon" title="Hizmet SSS">
+                                            <i class="la la-question text-info"></i>
+                                        </a>
+                                        <a href="<?= base_url('hizmet-guncelle/'.$item->id) ?>" class="btn btn-sm btn-clean btn-icon" title="Güncelle">
+                                            <i class="la la-edit text-warning"></i>
+                                        </a>
+                                        <a  class="btn btn-sm btn-clean btn-icon " onclick="sosyalDelete(<?= $item->id ?>)"  data-toggle="modal" data-id="' + row.ssid + '"  data-target="#menu"><i  class="la la-trash text-danger"></i></a>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                        }else{
+                            ?>
+                            <tr>
+                                <td colspan="5">Herhangi bir kayıt bulunamadı   </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                    <?php
+                    createModal("Hizmet Sil", "Hizmeti  silmek istediğinize emin misiniz?", 1, array("Sil", "sosyal_delete()", "btn-danger", "fa fa-trash"));
+                    ?>
+                    <!--end: Datatable-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>

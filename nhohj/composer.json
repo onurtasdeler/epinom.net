@@ -1,0 +1,7 @@
+{
+    "require": {
+        "nicklaw5/twitch-api-php": "^7.2",
+        "google/apiclient": "^2.16",
+        "vitalybaev/google-merchant-feed": "^2.6"
+    }
+}
