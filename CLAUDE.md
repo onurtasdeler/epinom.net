@@ -10,6 +10,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Language**: Turkish (TR)
 - **Environment**: Production
 
+## 🚨 KRİTİK KURALLAR (MUTLAKA UYULMALI)
+
+### 1. YAPI UYUMLULUGU
+- **Mevcut yapiyi ASLA bozma** - Tum degisiklikler mevcut sistemle uyumlu olmali
+- **Geriye donuk uyumluluk** - Eski kodlar calismaya devam etmeli
+- **Kademeli gecis** - Yeni ozellikler eskilerle paralel calismali
+
+### 2. DOSYA ISLEMLERI
+- **SADECE /var/www/vhosts/epinom.net/httpdocs dizininde calis**
+- Bu dizin disinda HICBIR islem yapma
+- Sistem dosyalarina dokunma
+
+### 3. KOD STANDARTLARI
+- CodeIgniter 3.x yapisina uy
+- Mevcut naming convention kullan
+- Turkce URL yapisini koru
+- Mevcut helper ve library formatlarini takip et
+
+### 4. VERITABANI
+- Mevcut tablolari silme veya yapisini bozma
+- Yeni alanlar eklerken NULL veya DEFAULT deger kullan
+- Foreign key eklerken mevcut veriyi kontrol et
+
+### 5. TEST
+- Degisiklik sonrasi PHP syntax kontrolu yap
+- HTTP 200 dondugunu dogrula
+- Mevcut route larin calistigini kontrol et
+
 ## Architecture
 
 ### Directory Structure
@@ -39,6 +67,8 @@ httpdocs/
 |------------|---------|--------|
 | Main | Homepage | / |
 | User_controller | Auth, profile, orders | /uye/* |
+| Auth_controller | Yeni guvenli auth | /auth/* |
+| Profile_controller | Yeni profil yonetimi | /profil/* |
 | Games | Game categories & products | /oyunlar/*, /tum-oyunlar |
 | GameMoney | Game currency trading | /oyun-parasi/* |
 | Cart | Shopping cart | /sepetim, /siparis-onayi |
@@ -61,6 +91,7 @@ Auto-loaded helpers (application/helpers/):
 | Helper | Purpose |
 |--------|---------|
 | tools_helper | getActiveUser(), websiteStatus(), permalink() |
+| user_helper | Yeni auth sistemi helper fonksiyonlari |
 | payment_helper | Payment processing functions |
 | product_helper | Product price calculations |
 | frontend_helper | View helpers |
@@ -69,18 +100,23 @@ Auto-loaded helpers (application/helpers/):
 
 ### Models
 
-Thin model layer - most use CI Query Builder directly:
-- Users, Categories, Products_model
-- Orders_model, Helpdesk_model
-- Pages_model, News, Settings
+| Model | Purpose |
+|-------|---------|
+| Users | Eski kullanici modeli |
+| User_model | Yeni genisletilmis kullanici modeli |
+| User_balance_model | Bakiye islemleri ve log |
+| Categories, Products_model | Urun yonetimi |
+| Orders_model | Siparis yonetimi |
+| Helpdesk_model | Destek sistemi |
 
 ### Custom Libraries
 
-- Custom_cart - Extended cart functionality
-- Paymax_light_api - Paymax integration
-- Pinabi - Pinabi integration
-- Streamlabs - Donation system
-- Turkpin - Turkpin integration
+| Library | Purpose |
+|---------|---------|
+| User/Password_handler | Argon2ID sifreleme (MD5 yerine) |
+| User/User_authentication | Session ve rate limiting |
+| Custom_cart | Extended cart functionality |
+| Paymax_light_api | Paymax integration |
 
 ## Database
 
@@ -89,7 +125,7 @@ Thin model layer - most use CI Query Builder directly:
 - **Collation**: utf8mb4_general_ci
 - **Config**: application/config/database.php
 
-Key tables: users, products, categories, orders, config
+Key tables: users, products, categories, orders, config, balance_logs, login_logs
 
 ## Configuration Files
 
@@ -105,7 +141,7 @@ Key tables: users, products, categories, orders, config
 
 ### View Logs
 ```bash
-tail -f application/logs/log-2025-11-29.php
+tail -f application/logs/log-$(date +%Y-%m-%d).php
 ```
 
 ### Clear Session Cache
@@ -121,12 +157,18 @@ chmod -R 777 application/cache/
 chmod -R 777 application/logs/
 ```
 
+### PHP Syntax Check
+```bash
+/opt/plesk/php/8.1/bin/php -l dosya.php
+```
+
 ## Important Notes
 
 ### Security Configuration
 - CSRF protection: ENABLED
 - XSS filtering: Use `->input->post('field', TRUE)`
 - Environment: Set via .htaccess `SetEnv CI_ENV production`
+- Password: Argon2ID (yeni), MD5 geriye uyumlu
 
 ### Session Handling
 - Driver: files
@@ -135,8 +177,10 @@ chmod -R 777 application/logs/
 
 ### URL Structure
 All user-facing URLs are in Turkish:
-- /uye/giris-yap (login)
-- /uye/kayit-ol (register)
+- /uye/giris-yap (login - eski)
+- /auth/giris (login - yeni)
+- /uye/kayit-ol (register - eski)
+- /auth/kayit (register - yeni)
 - /sepetim (cart)
 - /oyunlar (games)
 
@@ -144,11 +188,14 @@ All user-facing URLs are in Turkish:
 Separate CodeIgniter instance at /262234_admin/
 Has its own application/, system/, and assets/ directories.
 
-## Known Issues to Address
+## Recent Updates
 
-1. **Password hashing**: Uses MD5 - should migrate to password_hash()
-2. **Log accumulation**: 252MB in logs - implement rotation
-3. **Cookie security**: cookie_secure should be TRUE for HTTPS
+### Kullanici Modulu Guncellemesi (2024-11)
+- MD5 -> Argon2ID sifreleme gecisi
+- Rate limiting (5 deneme / 15dk kilit)
+- Session hijacking korumasi
+- balance_logs ve login_logs tablolari
+- Yeni Auth_controller ve Profile_controller
 
 ## Code Style
 
