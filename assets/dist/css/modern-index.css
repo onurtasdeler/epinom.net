@@ -1038,3 +1038,305 @@ body.dark-mode::before {
         justify-content: center;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER v2 - OVERRIDE FIX with !important
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Main Footer Container */
+footer.neon-footer {
+    background: linear-gradient(180deg, #0a0a14 0%, #0f0f1a 100%) !important;
+    padding: 0 !important;
+    margin-top: 60px !important;
+    position: relative !important;
+    border: none !important;
+}
+
+/* Neon Line */
+footer.neon-footer .neon-footer-line {
+    height: 3px !important;
+    background: linear-gradient(90deg, transparent, #a855f7, #ec4899, #3b82f6, transparent) !important;
+    margin-bottom: 60px !important;
+    animation: neon-pulse 3s ease-in-out infinite !important;
+}
+
+/* Grid Layout - FORCE 4 COLUMNS */
+footer.neon-footer .neon-footer-grid {
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr !important;
+    gap: 3rem !important;
+    padding: 0 0 3rem 0 !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* Brand Section */
+footer.neon-footer .neon-footer-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+}
+
+footer.neon-footer .neon-footer-logo {
+    display: inline-block !important;
+    width: 140px !important;
+}
+
+footer.neon-footer .neon-footer-logo img {
+    width: 100% !important;
+    height: auto !important;
+    filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.5)) !important;
+}
+
+footer.neon-footer .neon-footer-desc {
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Social Links */
+footer.neon-footer .neon-social-links {
+    display: flex !important;
+    gap: 12px !important;
+    margin-top: 1rem !important;
+}
+
+footer.neon-footer .neon-social-link {
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 1.2rem !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+footer.neon-footer .neon-social-link:hover {
+    background: rgba(168, 85, 247, 0.2) !important;
+    border-color: #a855f7 !important;
+    color: #a855f7 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 5px 20px rgba(168, 85, 247, 0.3) !important;
+}
+
+footer.neon-footer .neon-social-link i {
+    font-size: 1.2rem !important;
+}
+
+/* Navigation Columns */
+footer.neon-footer .neon-footer-nav {
+    display: block !important;
+}
+
+footer.neon-footer .neon-footer-title {
+    color: #fff !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 2px solid rgba(168, 85, 247, 0.3) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+footer.neon-footer .neon-footer-links {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+footer.neon-footer .neon-footer-links li {
+    margin-bottom: 0.75rem !important;
+    list-style: none !important;
+}
+
+footer.neon-footer .neon-footer-links a {
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-decoration: none !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s ease !important;
+    display: inline-block !important;
+    padding: 4px 0 !important;
+}
+
+footer.neon-footer .neon-footer-links a:hover {
+    color: #a855f7 !important;
+    padding-left: 8px !important;
+}
+
+/* Contact Section */
+footer.neon-footer .neon-footer-contact {
+    display: block !important;
+}
+
+footer.neon-footer .neon-contact-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    text-decoration: none !important;
+    padding: 10px 0 !important;
+    transition: all 0.3s ease !important;
+}
+
+footer.neon-footer .neon-contact-item:hover {
+    color: #a855f7 !important;
+}
+
+footer.neon-footer .neon-contact-item i {
+    width: 36px !important;
+    height: 36px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(168, 85, 247, 0.15) !important;
+    border-radius: 10px !important;
+    color: #a855f7 !important;
+    font-size: 0.9rem !important;
+}
+
+/* Footer Bottom */
+footer.neon-footer .neon-footer-bottom {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1.5rem 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-top: 2rem !important;
+}
+
+footer.neon-footer .neon-copyright {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 0.85rem !important;
+}
+
+footer.neon-footer .neon-badges {
+    display: flex !important;
+    gap: 1rem !important;
+    align-items: center !important;
+}
+
+footer.neon-footer .neon-badge {
+    height: 28px !important;
+    width: auto !important;
+    opacity: 0.6 !important;
+    filter: grayscale(50%) !important;
+    transition: all 0.3s ease !important;
+}
+
+footer.neon-footer .neon-badge:hover {
+    opacity: 1 !important;
+    filter: grayscale(0%) !important;
+}
+
+/* CTA Banner */
+.neon-cta-wrapper {
+    padding: 40px 20px !important;
+    background: transparent !important;
+}
+
+.neon-cta-banner {
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(236, 72, 153, 0.15)) !important;
+    border: 1px solid rgba(168, 85, 247, 0.3) !important;
+    border-radius: 20px !important;
+    padding: 2rem 3rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.neon-cta-content h3 {
+    color: #fff !important;
+    font-size: 1.4rem !important;
+    margin: 0 0 0.5rem 0 !important;
+}
+
+.neon-cta-content p {
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin: 0 !important;
+    font-size: 0.95rem !important;
+}
+
+.neon-cta-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background: linear-gradient(135deg, #a855f7, #ec4899) !important;
+    color: #fff !important;
+    padding: 14px 28px !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
+}
+
+.neon-cta-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4) !important;
+    color: #fff !important;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 992px) {
+    footer.neon-footer .neon-footer-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2rem !important;
+    }
+
+    footer.neon-footer .neon-footer-brand {
+        grid-column: span 2 !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .neon-cta-banner {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    footer.neon-footer .neon-footer-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+    }
+
+    footer.neon-footer .neon-footer-brand {
+        grid-column: span 1 !important;
+    }
+
+    footer.neon-footer .neon-social-links {
+        justify-content: center !important;
+    }
+
+    footer.neon-footer .neon-footer-links a {
+        padding-left: 0 !important;
+    }
+
+    footer.neon-footer .neon-footer-links a:hover {
+        padding-left: 0 !important;
+    }
+
+    footer.neon-footer .neon-contact-item {
+        justify-content: center !important;
+    }
+
+    footer.neon-footer .neon-footer-bottom {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        text-align: center !important;
+    }
+}
