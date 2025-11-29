@@ -146,3 +146,27 @@ $route['pvp-serverlar/sunucularim/sil/(:num)'] = 'Pvpservers/Userserversdelete/$
 $route['pvp-serverlar/api'] = 'Pvpservers/Api';
 
 $route['sitemap.xml'] = 'SEO/Sitemap';
+// ═══════════════════════════════════════════════════════════════
+// YENİ KULLANICI MODULU ROUTE'LARI (Auth ve Profile Controller)
+// ═══════════════════════════════════════════════════════════════
+
+// Auth Controller - Yeni guvenli kimlik dogrulama
+$route['auth/giris'] = 'Auth_controller/login';
+$route['auth/kayit'] = 'Auth_controller/register';
+$route['auth/aktivasyon/(:any)'] = 'Auth_controller/activation/$1';
+$route['auth/cikis'] = 'Auth_controller/logout';
+$route['auth/sifremi-unuttum'] = 'Auth_controller/forgotPassword';
+$route['auth/sifre-sifirla/(:any)'] = 'Auth_controller/resetPassword/$1';
+
+// Profile Controller - Kullanici profil islemleri
+$route['profil/anasayfa'] = 'Profile_controller/dashboard';
+$route['profil/ayarlar'] = 'Profile_controller/settings';
+$route['profil/sifre-degistir'] = 'Profile_controller/changePassword';
+$route['profil/tc-dogrula'] = 'Profile_controller/tcVerification';
+$route['profil/bakiye'] = 'Profile_controller/balance';
+$route['profil/siparisler'] = 'Profile_controller/orders';
+$route['profil/oyun-parasi'] = 'Profile_controller/gameMoneyOrders';
+$route['profil/bildirimler'] = 'Profile_controller/notifications';
+$route['profil/banka-hesaplari'] = 'Profile_controller/bankAccounts';
+$route['profil/banka-hesabi-ekle'] = 'Profile_controller/addBankAccount';
+$route['profil/referanslar'] = 'Profile_controller/referrals';

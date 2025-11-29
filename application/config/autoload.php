@@ -104,7 +104,8 @@ $autoload['helper'] = array(
     "sms",
     "email",
     "social_login",
-    "user_steps"
+    "user_steps",
+    "user"
 );
 
 /*
